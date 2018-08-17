@@ -1,8 +1,8 @@
 body{
     /*background-color: rgba(20,20,20,0.4);   */ 
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-image: url("tennis/roger.jpg");
-    background-size: 1700px 1400px;
+    background-size: 1700px 1080px;
     background-attachment: scroll; 
 }
 
