@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app="myApp">
+        <script src="angular.js"></script>
+        
+        <div class="mrgn">
+        <div ng-controller="myCtrl">
+   <h1 style="color: white;margin-left: 80px;background-color: teal;display: inline"><u>List of most Major Grand Slam Winners</u></h1><br/><br/>
+    <span style="font-size: 19px;color: white">Filter Results using: </span>
+   <select ng-model="sort">
+       <option>name</option>
+       <option>rank</option>
+       <option>country</option>
+       <option>titles</option>
+       <option>years</option>
+   </select>   &nbsp;&nbsp;&nbsp;&nbsp;       
+    <span style="font-size: 19px;color: white">Search:</span>
+    <input autofocus type="text" ng-model="search">  &nbsp;&nbsp;&nbsp;&nbsp;
+    <span style="font-size: 19px;color: white">Limit Results To:</span>
+    <select ng-model="limit">
+        <option>2</option>
+        <option>4</option>
+        <option>6</option>
+        <option>8</option>
+        <option value="10">All</option>
+    </select>
+   <br/><br/>
+   <table>
+       <tr style="font-size: 25px">
+           <th>Rank</th><th>Name</th><th>Country</th><th>Years-Active</th><th>Titles</th><th>Image</th>
+       </tr>
+       <tr style="text-align: center;font-size: 20px" ng-repeat="item in obj | orderBy:sort | filter: search | limitTo: limit">
+           
+           <td>{{item.rank}}</td>
+           <td>{{item.name | uppercase}}</td>
+           <td>{{item.country}}</td>
+           <td>{{item.years}}</td>
+           <td>{{item.titles}}</td>
+           <td>
+               <img style="border: 1px solid black;border-radius: 9px" height="100px" width="200px" src="tennis/{{item.image}}"/>
+           </td>
+       </tr>
+   </table>
+
+</div>
+</div>
+
+
+
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller("myCtrl",function($scope){
+          
+        $scope.sort = ['rank','country','name','titles','years'];
+        $scope.search = "";
+        $scope.limit = 10;
+        $scope.obj = 
+                     [
+                         {rank: 1,name: 'Roger Federer', years:'2003-2018', country: 'Switzerland', titles: 20,image:'image1.jpg'},
+                         {rank: 2,name: 'Rafael Nadal',  years:'2005-2018', country: 'Spain',       titles: 17,image:'image2.jpg'},
+                         {rank: 3,name: 'Pete Sampras',  years:'1990-2002', country: 'USA',         titles: 14,image:'sampras.jpg'},
+                         {rank: 4,name: 'Novak Djokovic',years:'2003-2018', country: 'Serbia',      titles: 13,image:'image3.jpg'},
+                         {rank: 5,name: 'Roy Emerson',   years:'1961-1967', country: 'Australia',   titles: 12,image:'emerson.jpg'},
+                         {rank: 6,name: 'Rod Laver',     years:'1960-1969', country: 'Australia',   titles: 11,image:'laver.jpg'},
+                         {rank: 7,name: 'Bjorn Borg',    years:'1974-1981', country: 'Sweden',      titles: 11,image:'bjorg.jpg'},
+                         {rank: 8,name: 'Bill Tilden',   years:'1920-1930', country: 'USA',         titles: 10,image:'tilden.jpg'},
+                         {rank: 9,name: 'Fred Perry',    years:'1933-1936', country: 'England',     titles: 08,image:'perry.jpg'},
+                         {rank: 10,name: 'Ken Rosewall',  years:'1953-1972', country: 'Australia',   titles: 08,image:'rosewall.jpg'}
+                     ];
+    });
+
+</script>
+
+
+
+</body>
+</html>
