@@ -3,7 +3,7 @@ body{
     background-repeat: repeat-y;
     background-image: url("tennis/roger.jpg");
     background-size: cover;
-    background-attachment: scroll; 
+    background-attachment: fixed; 
 }
 
 table{
