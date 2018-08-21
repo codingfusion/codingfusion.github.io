@@ -1,6 +1,6 @@
 body{
     /*background-color: rgba(20,20,20,0.4);   */ 
-    background-repeat: repeat-y;
+    background-repeat: no-repeat;
     background-image: url("tennis/roger.jpg");
     background-size: cover;
     background-attachment: fixed; 
